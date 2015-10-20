@@ -25,16 +25,61 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView1"
             android:layout_centerHorizontal="true"
-            android:text="Button" />
+            android:text="Photo" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="500dp"
+            android:layout_height="500dp"
+            android:layout_alignTop="@+id/surfaceView1"
+            android:layout_toRightOf="@+id/button1"
+            android:src="@drawable/abc_cab_background_top_holo_dark" />
 
         <SurfaceView
             android:id="@+id/surfaceView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_width="500dp"
+            android:layout_height="500dp"
             android:layout_below="@+id/button1"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="15dp" />
+            android:layout_marginRight="32dp"
+            android:layout_toLeftOf="@+id/button1" />
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout1"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_alignLeft="@+id/surfaceView1"
+            android:layout_alignTop="@+id/surfaceView1"
+            android:layout_marginLeft="81dp"
+            android:layout_marginTop="71dp" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="23dp"
+                android:text="La photo vous plait? je peux l&apos;envoyer" />
+
+            <Button
+                android:id="@+id/buttonno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@+id/textView2"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="50dp"
+                android:text="Non" />
+
+            <Button
+                android:id="@+id/buttonoui"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/buttonno"
+                android:layout_alignBottom="@+id/buttonno"
+                android:layout_toLeftOf="@+id/buttonno"
+                android:text="Oui" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
