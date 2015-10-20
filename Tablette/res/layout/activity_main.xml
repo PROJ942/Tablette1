@@ -19,6 +19,14 @@
             android:layout_marginTop="36dp"
             android:text="TextView" />
 
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView1"
+            android:layout_centerHorizontal="true"
+            android:text="Photo" />
+
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="500dp"
@@ -35,20 +43,14 @@
             android:layout_marginRight="32dp"
             android:layout_toLeftOf="@+id/button1" />
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/textView1"
-            android:layout_below="@+id/textView1"
-            android:text="Photo" />
-
         <RelativeLayout
             android:id="@+id/RelativeLayout1"
             android:layout_width="300dp"
             android:layout_height="200dp"
             android:layout_alignLeft="@+id/surfaceView1"
-            android:layout_marginLeft="98dp" >
+            android:layout_alignTop="@+id/surfaceView1"
+            android:layout_marginLeft="81dp"
+            android:layout_marginTop="71dp" >
 
             <TextView
                 android:id="@+id/textView2"
@@ -57,7 +59,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="23dp"
-                android:text="La photo vous plait? je peux l&apos;envoyer?" />
+                android:text="La photo vous plait? je peux l&apos;envoyer" />
 
             <Button
                 android:id="@+id/buttonno"
@@ -76,6 +78,7 @@
                 android:layout_alignBottom="@+id/buttonno"
                 android:layout_toLeftOf="@+id/buttonno"
                 android:text="Oui" />
+
         </RelativeLayout>
 
     </RelativeLayout>

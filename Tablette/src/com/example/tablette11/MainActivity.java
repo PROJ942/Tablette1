@@ -84,9 +84,10 @@ public class MainActivity extends ActionBarActivity   implements SurfaceHolder.C
         monBouton = (Button) findViewById(R.id.button1);
         mBoutonoui = (Button) findViewById(R.id.buttonoui);
         mBoutonnon = (Button) findViewById(R.id.buttonno);
-   ////////////////////////////     
+        
         mBoutonoui.setOnClickListener(new View.OnClickListener() {
 			
+			@Override
 			public void onClick(View v) {
 				// envoyer image
 				// proposer interface d'envoie
@@ -103,9 +104,10 @@ public class MainActivity extends ActionBarActivity   implements SurfaceHolder.C
 			}
 				
 		});  
-    ////////////////////////////////////    
+        
         mBoutonnon.setOnClickListener(new View.OnClickListener() {
 			
+			@Override
 			public void onClick(View v) {
 				// envoyer image
 				
@@ -118,7 +120,7 @@ public class MainActivity extends ActionBarActivity   implements SurfaceHolder.C
 		}); 
 			        
 				
-    ///////////////////////////////    
+        
         
         monBouton.setOnClickListener(new View.OnClickListener() {
 			
@@ -175,7 +177,7 @@ public class MainActivity extends ActionBarActivity   implements SurfaceHolder.C
 	                }/*else{
 	                	txtView.setText(taken.getPath() + " not found !");
 	                }*/
-	                //maSurfaceView.setVisibility(View.INVISIBLE);
+	                maSurfaceView.setVisibility(View.INVISIBLE);
 					mRelativeLayout.setVisibility(View.VISIBLE);
 					monBouton.setVisibility(View.INVISIBLE);
 	                // Nous red�marrons la pr�visualisation
@@ -339,10 +341,6 @@ public class MainActivity extends ActionBarActivity   implements SurfaceHolder.C
 	        camera = null;
 	    }
 	}
-	//////////////////////////////////////////////////////
-	/////////////////////////////////////////////////////////
-	///////////////////////Envoie Image/////////////////////////
-	/////////////////////////////////////////////////////////////
 	public class uploadToServer extends AsyncTask<Void, Void, String> {
 
         private ProgressDialog pd = new ProgressDialog(MainActivity.this);
@@ -357,7 +355,7 @@ public class MainActivity extends ActionBarActivity   implements SurfaceHolder.C
 
             ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
             nameValuePairs.add(new BasicNameValuePair("base64", ba1));
-            nameValuePairs.add(new BasicNameValuePair("ImageName", "tartanpion" + ".jpg"));
+            nameValuePairs.add(new BasicNameValuePair("ImageName", System.currentTimeMillis() + ".jpg"));
             try {
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpPost httppost = new HttpPost(URL);
