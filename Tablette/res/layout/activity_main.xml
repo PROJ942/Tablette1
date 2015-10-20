@@ -1,5 +1,5 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:background="#ffffff" >
 
         <TextView
             android:id="@+id/textView1"
@@ -47,10 +48,11 @@
             android:id="@+id/RelativeLayout1"
             android:layout_width="300dp"
             android:layout_height="200dp"
+            android:layout_alignBottom="@+id/surfaceView1"
             android:layout_alignLeft="@+id/surfaceView1"
+            android:layout_alignRight="@+id/surfaceView1"
             android:layout_alignTop="@+id/surfaceView1"
-            android:layout_marginLeft="81dp"
-            android:layout_marginTop="71dp" >
+            android:background="#ffffff" >
 
             <TextView
                 android:id="@+id/textView2"
@@ -59,29 +61,60 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="23dp"
-                android:text="La photo vous plait? je peux l&apos;envoyer" />
+                android:text="La photo vous plait? je peux l&apos;envoyer?" />
+
+            <Button
+                android:id="@+id/buttonoui"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView2"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="26dp"
+                android:layout_toLeftOf="@+id/buttonno"
+                android:text="Oui" />
 
             <Button
                 android:id="@+id/buttonno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignRight="@+id/textView2"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="50dp"
+                android:layout_alignTop="@+id/buttonoui"
+                android:layout_marginRight="38dp"
                 android:text="Non" />
 
-            <Button
-                android:id="@+id/buttonoui"
+            <RadioGroup
+                android:id="@+id/radioGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/buttonno"
-                android:layout_alignBottom="@+id/buttonno"
+                android:layout_alignLeft="@+id/buttonoui"
+                android:layout_alignRight="@+id/buttonEnvoi"
+                android:layout_below="@+id/buttonoui" >
+
+                <RadioButton
+                    android:id="@+id/radioAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Add" />
+
+                <RadioButton
+                    android:id="@+id/radioReco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reco" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/buttonEnvoi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="117dp"
                 android:layout_toLeftOf="@+id/buttonno"
-                android:text="Oui" />
+                android:text="Upload" />
 
         </RelativeLayout>
-
     </RelativeLayout>
 
 </FrameLayout>
-

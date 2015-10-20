@@ -45,6 +45,8 @@ import android.provider.MediaStore.Images;
 import android.provider.MediaStore.Images.Media;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -53,6 +55,7 @@ public class MainActivity extends ActionBarActivity   implements SurfaceHolder.C
 	public Button monBouton;
 	public Button mBoutonoui;
 	public Button mBoutonnon;
+	public Button mBoutonEnvoi;
 	
 	public SurfaceView maSurfaceView;
 	private Camera camera;
@@ -67,6 +70,9 @@ public class MainActivity extends ActionBarActivity   implements SurfaceHolder.C
 	private RelativeLayout  mRelativeLayout;
 	public String ba1;
 	public static String URL = "http://192.168.119.212/server_2.php";
+	public RadioButton mRadioAdd;
+	public RadioButton mRadioReco;
+	public RadioGroup mRadioGroup;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,10 +88,14 @@ public class MainActivity extends ActionBarActivity   implements SurfaceHolder.C
         mRelativeLayout =(RelativeLayout) findViewById(R.id.RelativeLayout1);
         mRelativeLayout.setVisibility(View.INVISIBLE);
         monBouton = (Button) findViewById(R.id.button1);
+        mBoutonEnvoi = (Button) findViewById(R.id.buttonEnvoi);
         mBoutonoui = (Button) findViewById(R.id.buttonoui);
         mBoutonnon = (Button) findViewById(R.id.buttonno);
+        mRadioAdd = (RadioButton) findViewById(R.id.radioAdd);
+        mRadioReco = (RadioButton) findViewById(R.id.radioReco);
+        mRadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         
-        mBoutonoui.setOnClickListener(new View.OnClickListener() {
+        mBoutonEnvoi.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -93,6 +103,7 @@ public class MainActivity extends ActionBarActivity   implements SurfaceHolder.C
 				// proposer interface d'envoie
 				//maSurfaceView.setVisibility(View.VISIBLE);
 				mRelativeLayout.setVisibility(View.INVISIBLE);
+				mRadioGroup.setVisibility(View.INVISIBLE);
 				monBouton.setVisibility(View.VISIBLE);
 				ByteArrayOutputStream bao = new ByteArrayOutputStream();
 				myBitmap.compress(Bitmap.CompressFormat.JPEG, 90, bao);
@@ -103,6 +114,22 @@ public class MainActivity extends ActionBarActivity   implements SurfaceHolder.C
 		        new uploadToServer().execute();
 			}
 				
+		});
+        
+        mBoutonoui.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// envoyer image
+				// proposer interface d'envoie
+				//maSurfaceView.setVisibility(View.VISIBLE);
+				//mRelativeLayout.setVisibility(View.INVISIBLE);
+				mRadioGroup.setVisibility(View.VISIBLE);
+				//monBouton.setVisibility(View.VISIBLE);
+				mBoutonEnvoi.setVisibility(View.VISIBLE);
+				
+			}
+				
 		});  
         
         mBoutonnon.setOnClickListener(new View.OnClickListener() {
@@ -111,8 +138,8 @@ public class MainActivity extends ActionBarActivity   implements SurfaceHolder.C
 			public void onClick(View v) {
 				// envoyer image
 				
-				//mRelativeLayout.setVisibility(View.INVISIBLE);
-				maSurfaceView.setVisibility(View.VISIBLE);
+				mRelativeLayout.setVisibility(View.INVISIBLE);
+				//maSurfaceView.setVisibility(View.VISIBLE);
 				monBouton.setVisibility(View.VISIBLE);
 			
 			}
@@ -177,11 +204,13 @@ public class MainActivity extends ActionBarActivity   implements SurfaceHolder.C
 	                }/*else{
 	                	txtView.setText(taken.getPath() + " not found !");
 	                }*/
-	                maSurfaceView.setVisibility(View.INVISIBLE);
+	                //maSurfaceView.setVisibility(View.INVISIBLE);
 					mRelativeLayout.setVisibility(View.VISIBLE);
+					mBoutonEnvoi.setVisibility(View.INVISIBLE);
+					mRadioGroup.setVisibility(View.INVISIBLE);
 					monBouton.setVisibility(View.INVISIBLE);
 	                // Nous red�marrons la pr�visualisation
-	                //camera.startPreview();
+	                camera.startPreview();
 	            }
 	        }
 		};
@@ -355,7 +384,8 @@ public class MainActivity extends ActionBarActivity   implements SurfaceHolder.C
 
             ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
             nameValuePairs.add(new BasicNameValuePair("base64", ba1));
-            nameValuePairs.add(new BasicNameValuePair("ImageName", System.currentTimeMillis() + ".jpg"));
+            //nameValuePairs.add(new BasicNameValuePair("ImageName", System.currentTimeMillis() + ".jpg"));
+            nameValuePairs.add(new BasicNameValuePair("ImageName", "reantlour" + ".jpg"));
             try {
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpPost httppost = new HttpPost(URL);
